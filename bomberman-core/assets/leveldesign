@@ -1,0 +1,91 @@
+!define map: base
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XPF-----------------------------FpX
+XFX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XFX
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------D-----------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-XFFFX-X-X-X-X-X-X-X-X
+X-----D--------FEF----------D-----X
+X-X-X-X-X-X-X-XFFFX-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------D-----------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+XFX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XFX
+XpF-----------------------------FpX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+!define map: base2
+XXXXXXXXXXXXXXXTTTTTXXXXXXXXXXXXXXX
+XPF-----------XTTTTTX-----------FpX
+XFX-X-X-X-X-X-XTTTTTX-X-X-X-X-X-XFX
+X-------------XTTTTTX-------------X
+X-X-X-X-X-X-X-XXXXXXX-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+XXXXXXX-X-X-X-X-X-X-X-X-X-X-XXXXXXX
+TTTTTTX---------------------XTTTTTT
+TTTTTTX-X-X-X-XFFFX-X-X-X-X-XTTTTTT
+TTTTTTX--------FEF--------D-XTTTTTT
+XXXXXXX-X-X-X-XFFFX-X-X-X-X-XXXXXXX
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-XXXXX-X-X-X-X-X-X-X-X
+X-------------XTTTX---------------X
+XFX-X-X-X-X-X-XTTTX-X-X-X-X-X-X-XFX
+XpF-----------XTTTX-------------FpX
+XXXXXXXXXXXXXXXTTTXXXXXXXXXXXXXXXXX
+
+!define level: 1
+map: base2
+#monster-noob: 10
+#monster-easy: 20
+monster-harder: 20 
+walls: 200
+item-flame: 15
+item-bomb: 15
+
+!define level: 2
+map: base
+#monster-noob: 10
+#monster-easy: 20
+monster-harder: 20 
+walls: 200
+item-flame: 15
+item-bomb: 15

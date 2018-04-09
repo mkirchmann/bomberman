@@ -1,0 +1,7 @@
+<?eclipse.ant.import?>
+<project>
+    <target name="build_jar">
+        <mkdir dir="target"/>
+        <jar basedir="bin" destfile="target/bomberman_core.jar"/>
+    </target>
+</project>
