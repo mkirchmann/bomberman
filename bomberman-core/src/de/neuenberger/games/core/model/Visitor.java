@@ -2,7 +2,7 @@ package de.neuenberger.games.core.model;
 
 /**
  * 
- * @author Michael Kirchmann, PRODYNA AG
+ * @author Michael Kirchmann
  *
  * @param <G>
  */

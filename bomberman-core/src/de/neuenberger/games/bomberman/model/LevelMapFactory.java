@@ -26,7 +26,7 @@ import de.neuenberger.games.core.model.SimpleMap;
  * position X: Concrete Block -: Empty field, fillable with tiles or monster E:
  * Exit point
  * 
- * @author Michael Kirchmann, PRODYNA AG
+ * @author Michael Kirchmann
  * 
  */
 public class LevelMapFactory {
