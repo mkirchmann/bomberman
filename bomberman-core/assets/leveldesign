@@ -1,3 +1,14 @@
+# Level Definition file
+# X solid wall
+# - place where an item or a monster can be placed
+# T transparrent, free place which can not be passed by monster or player
+# P possible player position
+# p alternative player position
+# E exit
+# D all 'D's have to be hit by bomb before the Exit opens
+# F free place which can be passed by monster or player, but no items or monsters placed here when level starts
+
+
 !define map: square
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XPF-----------------------------FpX
@@ -162,6 +173,36 @@ T----------FFF---T
 T----------------T
 TTTTTTTTTTTTTTTTTT
 
+!define map: aboveclouds
+XXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXX
+XPF--------XTTTTTX----------XTTTTTX-------Fp-XTTTTTX----------X
+XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
+X----D-----XTTTTTX----------XTTTTTX-----D----XTTTTTX----------X
+X-XX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---X-XXTTTTTX-X-X-X-X-XX
+X---------------------------------X---------------------------X
+X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XX
+X----------XTTTTTX----------XTTTTTX----------XTTTTTX----------X
+X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTXXXXX-XXXXXX
+X----------XTTTTTX----------XTTTTTX----------XTTTTTTTTTT-TTTTTT
+XXXXX-XXXXXXTTTTTXXXXX-XXXXXXTTTTTXXXXX-XXXXXXTTTTTTTTTT-TTTTTT
+TTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTT-------TTT
+TTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTT--FFF--TTT
+TTTTT------------------TTTTTTTTTTTTTTTT----------------FEF--TTT
+TTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTT--FFF--TTT
+TTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTTTTT-TTTTTTTTTTTTT-------TTT
+XXXXX-XXXXXXTTTTTXXXXX-XXXXXXTTTTTXXXXX-XXXXXXTTTTTTTTTT-TTTTTT
+X----------XTTTTTX----------XTTTTTX----------XTTTTTTTTTT-TTTTTT
+X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTXXXXX-XXXXXX
+X----------XTTTTTX----------XTTTTTX----------XTTTTTX----------X
+X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XX
+X---------------------------------X---------------------------X
+X-XX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---X-XXTTTTTX-X-X-X-X-XX
+X----D-----XTTTTTX----------XTTTTTX-----D----XTTTTTX----------X
+XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
+XpF--------XTTTTTX----------XTTTTTX-------Fp-XTTTTTX----------X
+XXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXX
+
+
 !define level: 1
 map: wideopen
 #monster-noob: 10
@@ -217,3 +258,11 @@ monster-hardest: 20
 walls: 200
 item-flame: 15
 item-bomb: 15
+
+!define level: 7
+map: aboveclouds
+monster-harder: 10 
+monster-hardest: 10
+walls: 200
+item-flame: 17
+item-bomb: 17
