@@ -1,4 +1,4 @@
-!define map: base
+!define map: square
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XPF-----------------------------FpX
 XFX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XFX
@@ -72,8 +72,126 @@ XFX-X-X-X-X-X-XTTTX-X-X-X-X-X-X-XFX
 XpF-----------XTTTX-------------FpX
 XXXXXXXXXXXXXXXTTTXXXXXXXXXXXXXXXXX
 
+!define map: nearlyround
+TTTTTTTTTTXXXXTTTTTTTXXXXTTTTTTTTTT
+TTTTTTXXXXX--XXTTTTTXX--XXXXXTTTTTT
+TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
+TXXPF---------XTTTTTX---------FpXTT
+TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
+TX-------------------------------XT
+XXX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XXX
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------D-----------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-XXXXXXXXXXXXXXXXX
+XX----------------XTTTTTTTTTTTTTTTT
+TXXXXX--X-X-X-X-X-XTTTTTTTTXXXXXTTT
+TTTTTXX-----------XXXXXXXXXXFFFXXTT
+TTTTTTX-X-X-X-X-X-----------FEFTXTT
+TTTTTXX-----------XXXXXXXXXXFFFXXTT
+TXXXXX--X-X-X-X-X-XTTTTTTTTXXXXXTTT
+XX----------------XTTTTTTTTTTTTTTTT
+X-X-X-X-X-X-X-X-X-XXXXXXXXXXXXXXXXX
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------D-----------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+XX-------------------------------XX
+TX-------------------------------XT
+TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
+TXXpF---------XTTTTTX---------FpXTT
+TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
+TTTTTTXXXXX---XTTTTTX---XXXXXTTTTTT
+TTTTTTTTTTXXXXXTTTTTXXXXXTTTTTTTTTT
+
+!define map: donut
+TTTTTTTTTTXXXXTTTTTTTXXXXTTTTTTTTTT
+TTTTTTXXXXX--XXTTTTTXX--XXXXXTTTTTT
+TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
+TXXPF---------XTTTTTX---------FpXTT
+TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
+TX-------------------------------XT
+XXX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XXX
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------D-----------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X---------------XXX---------------X
+X-------------XXTTTXX-------------X
+X------------XTTTTTTTX------------X
+X-----------XTTTTTTTTTX-----------X
+X-----------XTTTTTTTTTX-----------X
+X-----------XTTTTTTTTTX-----------X
+X------------XTTTTTTTX------------X
+X-------------XXTTTXX-------------X
+X---------------XXX---------------X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------D-----------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---------------------------------X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+XX-------------------------------XX
+TX-------------------------------XT
+TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
+TXXpF---------XTTTTTX---------FpXTT
+TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
+TTTTTTXXXXX---XTTTTTX---XXXXXTTTTTT
+TTTTTTTTTTXXXXXTTTTTXXXXXTTTTTTTTTT
+
+!define map: wideopen
+TTTTTTTTTTTTTTTTTT
+T----------------T
+T-FFF------D-----T
+T-FPFF-----------T
+T-FFF------------T
+T--F-------------T
+T----------------T
+T----------FFF---T
+T--D-------FEF---T
+T----------FFF---T
+T----------------T
+TTTTTTTTTTTTTTTTTT
+
 !define level: 1
+map: wideopen
+#monster-noob: 10
+monster-easy: 1
+monster-harder: 1 
+walls: 10
+item-flame: 1
+item-bomb: 1
+
+!define level: 2
+map: square
+#monster-noob: 10
+monster-easy: 2
+monster-harder: 2 
+walls: 10
+item-flame: 1
+item-bomb: 1
+
+!define level: 3
 map: base2
+#monster-noob: 10
+#monster-easy: 20
+monster-hard: 10
+monster-harder: 10 
+walls: 200
+item-flame: 15
+item-bomb: 15
+
+!define level: 4
+map: nearlyround
 #monster-noob: 10
 #monster-easy: 20
 monster-harder: 20 
@@ -81,11 +199,21 @@ walls: 200
 item-flame: 15
 item-bomb: 15
 
-!define level: 2
-map: base
+!define level: 5
+map: donut
 #monster-noob: 10
 #monster-easy: 20
 monster-harder: 20 
+walls: 200
+item-flame: 15
+item-bomb: 15
+
+!define level: 6
+map: nearlyround
+#monster-noob: 10
+#monster-easy: 20
+monster-harder: 20
+monster-hardest: 20  
 walls: 200
 item-flame: 15
 item-bomb: 15
