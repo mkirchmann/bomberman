@@ -132,19 +132,19 @@ XXX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XXX
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------D-----------X
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
-X---------------------------------X
-X---------------XXX---------------X
-X-------------XXTTTXX-------------X
-X------------XTTTTTTTX------------X
-X-----------XTTTTTTTTTX-----------X
-X-----------XTTTTTTTTTX-----------X
-X-----------XTTTTTTTTTX-----------X
-X------------XTTTTTTTX------------X
-X-------------XXTTTXX-------------X
-X---------------XXX---------------X
-X---------------------------------X
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X---X---X-------XXX-------X---X---X
+X-------------XXTTTXX-----------X-X
+X---X-X-X----XTTTTTTTX----X-X-X---X
+X-X---X-----XTTTTTTTTTX-----X---X-X
+X---X---X---XTTTTTTTTTX---X---X---X
+X-X--------XTTTTTTTTTTTX--------X-X
+X---X-X-X--FFFFFFETTTTTX--X-X-X---X
+X-X--------XTTTTTTTTTTTX--------X-X
+X---X---X---XTTTTTTTTTX---X---X---X
+X-X---X-----XTTTTTTTTTX-----X---X-X
+X---X-X-X----XTTTTTTTX----X-X-X---X
+X-X-----------XXTTTXX-----------X-X
+X---X---X-------XXX-------X---X---X
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------D-----------X
@@ -179,7 +179,7 @@ XPF--------XTTTTTX----------XTTTTTX-------Fp-XTTTTTX----------X
 XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
 X----D-----XTTTTTX----------XTTTTTX-----D----XTTTTTX----------X
 X-XX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---X-XXTTTTTX-X-X-X-X-XX
-X---------------------------------X---------------------------X
+X-------------------------------------------------------------X
 X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XX
 X----------XTTTTTX----------XTTTTTX----------XTTTTTX----------X
 X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTXXXXX-XXXXXX
@@ -195,7 +195,7 @@ X----------XTTTTTX----------XTTTTTX----------XTTTTTTTTTT-TTTTTT
 X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTXXXXX-XXXXXX
 X----------XTTTTTX----------XTTTTTX----------XTTTTTX----------X
 X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XX
-X---------------------------------X---------------------------X
+X-------------------------------------------------------------X
 X-XX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---X-XXTTTTTX-X-X-X-X-XX
 X----D-----XTTTTTX----------XTTTTTX-----D----XTTTTTX----------X
 XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
@@ -204,7 +204,8 @@ XXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXX
 
 
 !define level: 1
-map: wideopen
+#map: wideopen
+map: donut
 #monster-noob: 10
 monster-easy: 1
 monster-harder: 1 
@@ -213,7 +214,8 @@ item-flame: 1
 item-bomb: 1
 
 !define level: 2
-map: square
+#map: square
+map: aboveclouds
 #monster-noob: 10
 monster-easy: 2
 monster-harder: 2 

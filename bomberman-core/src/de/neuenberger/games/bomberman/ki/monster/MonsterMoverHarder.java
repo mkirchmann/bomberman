@@ -3,6 +3,7 @@ package de.neuenberger.games.bomberman.ki.monster;
 import java.util.Collections;
 import java.util.List;
 
+import de.neuenberger.games.bomberman.ki.RunnableScheduler;
 import de.neuenberger.games.bomberman.model.BombermanModel;
 import de.neuenberger.games.bomberman.model.Monster;
 import de.neuenberger.games.bomberman.model.Player;
@@ -13,8 +14,15 @@ import de.neuenberger.games.core.model.SimpleMap;
 
 public class MonsterMoverHarder extends MonsterMoverHard {
 
+	private final RunnableScheduler runnableScheduler;
+
 	public MonsterMoverHarder(BombermanModel model) {
+		this(model, RunnableScheduler.getInstance());
+	}
+
+	public MonsterMoverHarder(BombermanModel model, RunnableScheduler theScheduler) {
 		super(model);
+		this.runnableScheduler = theScheduler;
 	}
 	
 	@Override
@@ -46,7 +54,7 @@ public class MonsterMoverHarder extends MonsterMoverHard {
 			
 			// check if distance is close, if this is the case find path, otherwise only heuristic
 			if (!seekIsLocked && monster.getPosition().distanceSquared(player.getPosition())<25) {
-				new Thread(new PathFinderRunnable(monster, getModel().getMap(), player.getPosition())).start();
+				runnableScheduler.schedule(new PathFinderRunnable(monster, getModel().getMap(), player.getPosition()));
 			}
 			result = null;
 		} else {
