@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Mesh;
 
-import de.neuenberger.games.bomberman.presenter.BombermanPresenter;
 import de.neuenberger.games.bomberman.presenter.LoadScreen;
 import de.neuenberger.games.core.resource.ResourceManager;
 import de.neuenberger.games.core.resource.ShaderResource;

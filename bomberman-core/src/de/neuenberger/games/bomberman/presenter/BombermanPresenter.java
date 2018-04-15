@@ -5,7 +5,6 @@ import java.beans.PropertyChangeListener;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL10;
@@ -14,7 +13,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureWrap;
 import com.badlogic.gdx.graphics.g3d.model.SubMesh;
 import com.badlogic.gdx.graphics.g3d.model.still.StillModel;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
@@ -88,6 +86,7 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 	private Texture textureFloor;
 	private Texture textureFire;
 	private Texture textureConcrete;
+	private OverlayPresenter overlayPresenter;
 
 	public BombermanPresenter(BombermanGame game) {
 		super(game);
@@ -130,6 +129,8 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 		for (BaseSubPresenter renderer : subRenderer) {
 			renderer.create();
 		}
+		overlayPresenter = new OverlayPresenter(this.getModel());
+		overlayPresenter.create();
 	}
 	
 	public void postAsyncCreate() {
@@ -180,6 +181,7 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 		for (BaseSubPresenter renderer : subRenderer) {
 			renderer.dispose();
 		}
+		overlayPresenter.dispose();
 	}
 	
 	/**
@@ -345,6 +347,7 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 				resetLevel();
 			}
 		}
+		overlayPresenter.render();
 	}
 
 	private void renderObjectAnimated(long millis, MapPosition pos, StillModel text) {
@@ -414,6 +417,7 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 		camera.position.set(10, 10, 0);
 		camera.lookAt(0, 0, 0);
 		camera.up.set(0, 1, 0);
+		overlayPresenter.resize(width, height);
 	}
 
 	public BombermanModel getModel() {

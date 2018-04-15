@@ -1,6 +1,7 @@
 package de.neuenberger.games.bomberman.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -101,6 +102,10 @@ public class BombermanModel {
 		return player;
 	}
 
+	public List<Player> getPlayers() {
+		return Collections.unmodifiableList(getDynamicContent(Player.class));
+	}
+
 	public Exit getExit() {
 		return exit;
 	}
@@ -131,5 +136,32 @@ public class BombermanModel {
 
 	public void setGameOverTime(Long gameOverTime) {
 		this.gameOverTime = gameOverTime;
+	}
+
+	/**
+	 * Retrieve items ("Panel") count in this model.
+	 * 
+	 * @return Returns the number of items.
+	 */
+	public int getPanelCount() {
+		return getDynamicContent(Item.class).size();
+	}
+
+	/**
+	 * Retrieve Monster count in this model.
+	 * 
+	 * @return Returns the number of monsters.
+	 */
+	public int getMonsterCount() {
+		return getDynamicContent(Monster.class).size();
+	}
+
+	/**
+	 * Retrieve Antenna count in this model.
+	 * 
+	 * @return Returns the number of monsters.
+	 */
+	public int getAntennas() {
+		return getDynamicContent(Antenna.class).size();
 	}
 }
