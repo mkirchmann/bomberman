@@ -202,10 +202,21 @@ XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
 XpF--------XTTTTTX----------XTTTTTX-------Fp-XTTTTTX----------X
 XXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXX
 
+!define map: microsquare
+XXXXXTXXXXX
+XPF-XTX-FpX
+XFD-----DFX
+X---X-X---X
+XX-XTFTX-XX
+TT--FEF--TT
+XX-XTFTX-XX
+X---X-X---X
+XFD-----DFX
+XpF-XTX-FpX
+XXXXXTXXXXX
 
 !define level: 1
-#map: wideopen
-map: donut
+map: wideopen
 #monster-noob: 10
 monster-easy: 1
 monster-harder: 1 
@@ -214,8 +225,7 @@ item-flame: 1
 item-bomb: 1
 
 !define level: 2
-#map: square
-map: aboveclouds
+map: square
 #monster-noob: 10
 monster-easy: 2
 monster-harder: 2 
@@ -224,6 +234,15 @@ item-flame: 1
 item-bomb: 1
 
 !define level: 3
+map: microsquare
+#monster-noob: 10
+monster-easy: 2
+monster-harder: 2 
+walls: 10
+item-flame: 1
+item-bomb: 1
+
+!define level: 4
 map: base2
 #monster-noob: 10
 #monster-easy: 20
@@ -232,18 +251,10 @@ monster-harder: 10
 walls: 200
 item-flame: 15
 item-bomb: 15
-
-!define level: 4
-map: nearlyround
-#monster-noob: 10
-#monster-easy: 20
-monster-harder: 20 
-walls: 200
-item-flame: 15
-item-bomb: 15
+item-heart: 1
 
 !define level: 5
-map: donut
+map: nearlyround
 #monster-noob: 10
 #monster-easy: 20
 monster-harder: 20 
@@ -252,6 +263,15 @@ item-flame: 15
 item-bomb: 15
 
 !define level: 6
+map: donut
+#monster-noob: 10
+#monster-easy: 20
+monster-harder: 20 
+walls: 200
+item-flame: 15
+item-bomb: 15
+
+!define level: 7
 map: nearlyround
 #monster-noob: 10
 #monster-easy: 20
@@ -260,8 +280,9 @@ monster-hardest: 20
 walls: 200
 item-flame: 15
 item-bomb: 15
+item-heart: 2
 
-!define level: 7
+!define level: 8
 map: aboveclouds
 monster-harder: 10 
 monster-hardest: 10
