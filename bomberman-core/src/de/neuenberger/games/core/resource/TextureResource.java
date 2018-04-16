@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.Texture.TextureWrap;
 
 public class TextureResource extends DisposableResource<Texture> {
 
-	public TextureResource(FileHandle handle) {
-		super(ResourceType.TEXTURE, handle);
+	public TextureResource(ResourceManager resourceManager, FileHandle handle) {
+		super(resourceManager, ResourceType.TEXTURE, handle);
 	}
 
 	@Override

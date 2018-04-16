@@ -1,5 +1,6 @@
 package de.neuenberger.games.bomberman.model;
 
+import de.neuenberger.games.core.model.MapPosition;
 import de.neuenberger.games.core.model.NCell;
 import de.neuenberger.games.core.model.NCellContent;
 
@@ -7,21 +8,33 @@ import de.neuenberger.games.core.model.NCellContent;
 public class Bomb extends DynamicCellContent implements NCellContent {
 	private long deploymenttime = System.currentTimeMillis();
 	private long explosiontime = deploymenttime + 3000;
-	private Player originator;
 	private int flame;
 	private NCell cell;
 	private boolean exploding;
+	private Player originator;
 	
 	
 	public Bomb(Player player, NCell cell) {
-		super(player.getModel());
-		originator = player;
-		flame = player.getFlames();
-		this.cell = cell;
-		setPosition(player.getPosition());
-		setOrientation(player.getOrientation());
-		cell.setContent(this);
+		this(player.getModel(), player.getPosition(), player.getOrientation(), player.getFlames(), cell);
+		this.originator = player;
 	}
+
+	public Bomb(BombermanModel model, MapPosition position, Orientation orientation, int flames, NCell cell) {
+		super(model);
+		flame = flames;
+		this.cell = cell;
+		setPosition(position);
+		setOrientation(orientation);
+		cell.setContent(this);
+		model.getDynamicContent().add(this);
+	}
+
+	public Bomb(BombermanModel model, MapPosition position, Orientation orientation, int flames, NCell cell,
+			long delay) {
+		this(model, position, orientation, flames, cell);
+		explosiontime = deploymenttime + delay;
+	}
+
 	public long getDeploymenttime() {
 		return deploymenttime;
 	}
@@ -33,12 +46,6 @@ public class Bomb extends DynamicCellContent implements NCellContent {
 	}
 	public void setExplosiontime(long explosiontime) {
 		this.explosiontime = explosiontime;
-	}
-	public Player getOriginator() {
-		return originator;
-	}
-	public void setOriginator(Player originator) {
-		this.originator = originator;
 	}
 	public int getFlame() {
 		return flame;
@@ -69,6 +76,10 @@ public class Bomb extends DynamicCellContent implements NCellContent {
 	@Override
 	public boolean isDangerousFor(LiveContent monster) {
 		return true;
+	}
+
+	public Player getOriginator() {
+		return originator;
 	}
 	
 }

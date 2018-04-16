@@ -3,8 +3,8 @@ package de.neuenberger.games.core.resource;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
@@ -18,8 +18,10 @@ import com.badlogic.gdx.graphics.g3d.model.still.StillSubMesh;
 
 public class ObjectResource extends Resource<StillModel> {
 
-	protected ObjectResource(FileHandle fileHandle) {
-		super(ResourceType.OBJECT, fileHandle);
+	int cloneCount;
+
+	protected ObjectResource(ResourceManager resourceManager, FileHandle fileHandle) {
+		super(resourceManager, ResourceType.OBJECT, fileHandle);
 	}
 
 	@Override
@@ -46,6 +48,48 @@ public class ObjectResource extends Resource<StillModel> {
 		}
 	}
 	
+	/**
+	 * Clones the model, i.e. it loads the file, but no other changes (e.g. texture)
+	 * are taken into account. Resource Management is taken care by this method.
+	 */
+	public ObjectResource clone() {
+		ObjectResource clone = new ObjectResource(getResourceManager(), getFileHandle());
+		getResourceManager().addResource(getFileHandle().name() + "-" + (++cloneCount), clone);
+		return clone;
+	}
+
+	/**
+	 * Replace the texture for all submeshes.
+	 * 
+	 * @param texture
+	 *            texture.
+	 */
+	public void setTexture(Resource<Texture> texture) {
+		for (SubMesh subMesh : getResource().getSubMeshes()) {
+			replaceTexture(subMesh, texture);
+		}
+	}
+
+	private static void replaceTexture(SubMesh subMesh, Resource<Texture> texture) {
+		List<MaterialAttribute> removeAttribue = new LinkedList<MaterialAttribute>();
+		if (subMesh instanceof StillSubMesh) {
+			int numberOfAttributes = subMesh.material.getNumberOfAttributes();
+			for (int i = 0; i < numberOfAttributes; i++) {
+				MaterialAttribute attribute = subMesh.material.getAttribute(i);
+
+				if (attribute instanceof TextureAttribute) {
+					((TextureAttribute) attribute).texture = texture.getResource();
+				} else if (attribute instanceof ColorAttribute) {
+					System.out.println("Removing attribute " + attribute.name);
+					removeAttribue.add(attribute);
+				}
+			}
+			for (MaterialAttribute materialAttribute : removeAttribue) {
+				subMesh.material.removeAttribute(materialAttribute);
+			}
+		}
+	}
+
 	public static StillModel loadObjFile(FileHandle handle) {
 		ObjLoader loader = new ObjLoader();
 		StillModel stillModel = loader.loadObj(handle);

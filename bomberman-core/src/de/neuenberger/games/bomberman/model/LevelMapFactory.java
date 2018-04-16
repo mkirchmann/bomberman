@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,7 +39,10 @@ public class LevelMapFactory {
 	}
 
 	enum ItemGeneration implements Generation<Item.Type> {
-		FLAME("item-flame", Item.Type.FLAME), BOMB("item-bomb", Item.Type.BOMB);
+		FLAME("item-flame", Item.Type.FLAME), //
+		BOMB("item-bomb", Item.Type.BOMB), //
+		HEART("item-heart", Item.Type.HEART), //
+		POISON("item-poison", Item.Type.POISON); //
 		String keyword;
 		private Type value;
 
@@ -382,6 +384,12 @@ public class LevelMapFactory {
 					content.setBombable(false);
 					cell.setContent(content);
 					break;
+				case 'C':
+					Wall breakableWall = new Wall(model, cell);
+					breakableWall.setBombable(true);
+					cell.setContent(breakableWall);
+					model.getDynamicContent().add(breakableWall);
+					break;
 				case '-':
 					result.freePositions.add(position);
 					break;
@@ -398,7 +406,7 @@ public class LevelMapFactory {
 						cell.setContent(exit);
 					}
 					break;
-				case 'D': // Destroyable object
+				case 'D': // Destroyable object i.e. Antenna
 					if (create) {
 						Antenna antenna = new Antenna(model, cell);
 						cell.setContent(antenna);

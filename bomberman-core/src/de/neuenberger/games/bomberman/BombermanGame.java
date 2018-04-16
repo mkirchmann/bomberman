@@ -36,8 +36,8 @@ public class BombermanGame implements ApplicationListener {
 	@Override
 	public void create() {
 		ResourceManager rm = ResourceManager.getInstance();
-		rm.addResource("simple", new ShaderResource("simple"));
-		rm.addResource("spinctex", new ShaderResource("spinctex"));
+		rm.addResource("simple", new ShaderResource(rm, "simple"));
+		rm.addResource("spinctex", new ShaderResource(rm, "spinctex"));
 		rm.loadResources();
 		screen = new LoadScreen(this);
 		((LoadScreen)screen).create();

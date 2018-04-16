@@ -11,9 +11,9 @@
 
 !define map: square
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XPF-----------------------------FpX
+XPFC---------------------------CFpX
 XFX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XFX
-X---------------------------------X
+XC-------------------------------CX
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
@@ -41,16 +41,16 @@ X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
-X---------------------------------X
+XC-------------------------------CX
 XFX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XFX
-XpF-----------------------------FpX
+XpFC---------------------------CFpX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 !define map: base2
 XXXXXXXXXXXXXXXTTTTTXXXXXXXXXXXXXXX
-XPF-----------XTTTTTX-----------FpX
+XPFC----------XTTTTTX----------CFpX
 XFX-X-X-X-X-X-XTTTTTX-X-X-X-X-X-XFX
-X-------------XTTTTTX-------------X
+XC------------XTTTTTX------------CX
 X-X-X-X-X-X-X-XXXXXXX-X-X-X-X-X-X-X
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
@@ -78,18 +78,18 @@ X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------------------X
 X-X-X-X-X-X-X-XXXXX-X-X-X-X-X-X-X-X
-X-------------XTTTX---------------X
+XC------------XTTTX--------------CX
 XFX-X-X-X-X-X-XTTTX-X-X-X-X-X-X-XFX
-XpF-----------XTTTX-------------FpX
+XpFC----------XTTTX------------CFpX
 XXXXXXXXXXXXXXXTTTXXXXXXXXXXXXXXXXX
 
 !define map: nearlyround
 TTTTTTTTTTXXXXTTTTTTTXXXXTTTTTTTTTT
 TTTTTTXXXXX--XXTTTTTXX--XXXXXTTTTTT
 TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
-TXXPF---------XTTTTTX---------FpXTT
+TXXPFC--------XTTTTTX--------CFpXTT
 TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
-TX-------------------------------XT
+TX-C---------------------------C-XT
 XXX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XXX
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
@@ -114,9 +114,9 @@ X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 XX-------------------------------XX
-TX-------------------------------XT
+TX-C---------------------------C-XT
 TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
-TXXpF---------XTTTTTX---------FpXTT
+TXXpFC--------XTTTTTX--------CFpXTT
 TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
 TTTTTTXXXXX---XTTTTTX---XXXXXTTTTTT
 TTTTTTTTTTXXXXXTTTTTXXXXXTTTTTTTTTT
@@ -125,9 +125,9 @@ TTTTTTTTTTXXXXXTTTTTXXXXXTTTTTTTTTT
 TTTTTTTTTTXXXXTTTTTTTXXXXTTTTTTTTTT
 TTTTTTXXXXX--XXTTTTTXX--XXXXXTTTTTT
 TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
-TXXPF---------XTTTTTX---------FpXTT
+TXXPFC--------XTTTTTX--------CFpXTT
 TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
-TX-------------------------------XT
+TX-C---------------------------C-XT
 XXX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XXX
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
@@ -152,32 +152,32 @@ X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 X---------------------------------X
 X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 XX-------------------------------XX
-TX-------------------------------XT
+TX-C---------------------------C-XT
 TXXFX-X-X-X-X-XXXXXXX-X-X-X-X-XFXXT
-TXXpF---------XTTTTTX---------FpXTT
+TXXpFC--------XTTTTTX--------CFpXTT
 TTXXXXX-X-X-X-XTTTTTX-X-X-X-XXXXXTT
 TTTTTTXXXXX---XTTTTTX---XXXXXTTTTTT
 TTTTTTTTTTXXXXXTTTTTXXXXXTTTTTTTTTT
 
 !define map: wideopen
-TTTTTTTTTTTTTTTTTT
-T----------------T
-T-FFF------D-----T
-T-FPFF-----------T
-T-FFF------------T
-T--F-------------T
-T----------------T
-T----------FFF---T
-T--D-------FEF---T
-T----------FFF---T
-T----------------T
-TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+T-CCC-----------------TTTTTTT
+TCFFFC-----D-------------TTTT
+TCFPFFC--------------------TT
+TCFFFC----------------------T
+T-CFC-----------------------T
+T--C-----------------------TT
+T----------FFF-----------TTTT
+T--D-------FEF--------TTTTTTT
+T----------FFF---TTTTTTTTTTTT
+T----------------TTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 
 !define map: aboveclouds
 XXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXX
-XPF--------XTTTTTX----------XTTTTTX-------Fp-XTTTTTX----------X
+XPFFC------XTTTTTX----------XTTTTTX-------Cp-XTTTTTX----------X
 XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
-X----D-----XTTTTTX----------XTTTTTX-----D----XTTTTTX----------X
+XC---D-----XTTTTTX----------XTTTTTX-----D--C-XTTTTTX----------X
 X-XX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---X-XXTTTTTX-X-X-X-X-XX
 X-------------------------------------------------------------X
 X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XX
@@ -197,9 +197,9 @@ X----------XTTTTTX----------XTTTTTX----------XTTTTTX----------X
 X-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X-X-X-XX
 X-------------------------------------------------------------X
 X-XX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---X-XXTTTTTX-X-X-X-X-XX
-X----D-----XTTTTTX----------XTTTTTX-----D----XTTTTTX----------X
+XC---D-----XTTTTTX----------XTTTTTX-----D--C-XTTTTTX----------X
 XFXX---XX-XXTTTTTX-X-X-X-X-XXTTTTTX-X-X---XFXXTTTTTX-X-X-X-X-XX
-XpF--------XTTTTTX----------XTTTTTX-------Fp-XTTTTTX----------X
+XpFFC------XTTTTTX----------XTTTTTX------CFpFXTTTTTX----------X
 XXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXXTTTTTXXXXXXXXXXXX
 
 !define map: microsquare
@@ -217,12 +217,18 @@ XXXXXTXXXXX
 
 !define level: 1
 map: wideopen
-#monster-noob: 10
+monster-noob: 2
 monster-easy: 1
-monster-harder: 1 
-walls: 10
+monster-medium: 1
+monster-hard: 1
+monster-harder: 1
+monster-hardest: 1
+ 
+walls: 4
 item-flame: 1
 item-bomb: 1
+item-poison: 1
+item-heart: 1
 
 !define level: 2
 map: square
@@ -244,10 +250,10 @@ item-bomb: 1
 
 !define level: 4
 map: base2
-#monster-noob: 10
-#monster-easy: 20
-monster-hard: 10
-monster-harder: 10 
+monster-noob: 6
+monster-easy: 10
+monster-hard: 2
+monster-harder: 2 
 walls: 200
 item-flame: 15
 item-bomb: 15
@@ -255,28 +261,28 @@ item-heart: 1
 
 !define level: 5
 map: nearlyround
-#monster-noob: 10
-#monster-easy: 20
-monster-harder: 20 
+monster-noob: 15
+monster-hard: 10
+monster-harder: 4 
 walls: 200
 item-flame: 15
 item-bomb: 15
 
 !define level: 6
 map: donut
-#monster-noob: 10
-#monster-easy: 20
-monster-harder: 20 
+monster-noob: 10
+monster-hard: 15
+monster-harder: 4 
 walls: 200
 item-flame: 15
 item-bomb: 15
 
 !define level: 7
 map: nearlyround
-#monster-noob: 10
-#monster-easy: 20
-monster-harder: 20
-monster-hardest: 20  
+monster-noob: 10
+monster-medium: 10
+monster-hard: 15
+monster-hardest: 4  
 walls: 200
 item-flame: 15
 item-bomb: 15
@@ -284,8 +290,10 @@ item-heart: 2
 
 !define level: 8
 map: aboveclouds
-monster-harder: 10 
-monster-hardest: 10
+monster-noob: 5
+monster-medium: 10
+monster-hard: 20
+monster-hardest: 5
 walls: 200
 item-flame: 17
 item-bomb: 17

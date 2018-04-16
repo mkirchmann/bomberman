@@ -87,9 +87,11 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 	private Texture textureFire;
 	private Texture textureConcrete;
 	private OverlayPresenter overlayPresenter;
+	private LoadScreen loadScreen;
 
-	public BombermanPresenter(BombermanGame game) {
+	public BombermanPresenter(BombermanGame game, LoadScreen theLoadScreen) {
 		super(game);
+		this.loadScreen = theLoadScreen;
 	}
 
 	public void create() {
@@ -217,14 +219,28 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 	public void render(float delta) {
 		if (!model.isLevelComplete() && !model.isGameOver()) {
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-				MapPosition position = touchRay(camera.getPickRay(Gdx.input.getX(), Gdx.input.getY()));
-				playerControl.handleLeftClick(position, Gdx.graphics.getDeltaTime());
+				// MapPosition position = touchRay(camera.getPickRay(Gdx.input.getX(),
+				// Gdx.input.getY()));
+				// playerControl.handleLeftClick(position, Gdx.graphics.getDeltaTime());
 			} else if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
-				playerControl.tryLayBomb();
+				// playerControl.tryLayBomb();
 			} else if (Gdx.input.isKeyPressed(Input.Keys.MENU)) {
-				playerControl.tryLayBomb();
+				// playerControl.tryLayBomb();
 			}
-			playerControl.control(Gdx.input, delta);
+
+			ControlButtonStates controlButtonStates = overlayPresenter.control(Gdx.input);
+			controlButtonStates.setUpButtonPressed(
+					controlButtonStates.isUpButtonPressed() || Gdx.input.isKeyPressed(Input.Keys.UP));
+			controlButtonStates.setDownButtonPressed(
+					controlButtonStates.isDownButtonPressed() || Gdx.input.isKeyPressed(Input.Keys.DOWN));
+			controlButtonStates.setLeftButtonPressed(
+					controlButtonStates.isLeftButtonPressed() || Gdx.input.isKeyPressed(Input.Keys.LEFT));
+			controlButtonStates.setRightButtonPressed(
+					controlButtonStates.isRightButtonPressed() || Gdx.input.isKeyPressed(Input.Keys.RIGHT));
+			controlButtonStates.setFireButtonPressed(
+					controlButtonStates.isFireButtonPressed() || Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT));
+
+			playerControl.control(controlButtonStates, delta);
 		}
 		// position.control(Gdx.input);
 		// position.apply(camera);
@@ -237,7 +253,7 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 		Gdx.gl.glEnable(GL10.GL_FRONT_AND_BACK);
 		Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
 		Gdx.gl.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		Gdx.gl.glActiveTexture(0);
+		// Gdx.gl.glActiveTexture(0);
 
 		shaderLightning.setUniformf("u_lightdir", lightdir);
 		shaderLightning.setUniformf("ambience", 0.2f);
@@ -304,6 +320,7 @@ public class BombermanPresenter extends DefaultScreen implements PropertyChangeL
 			if (millis<0) {
 				model.setGameOverTime(null);
 				nextLevel(); // i.e. level 0
+				loadScreen.present();
 			} else {
 				continuerender=false;
 				MapPosition pos = playerControl.getPosition();

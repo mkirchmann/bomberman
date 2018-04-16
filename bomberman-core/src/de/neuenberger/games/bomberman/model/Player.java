@@ -38,10 +38,7 @@ public class Player extends LiveContent implements ILivecontent {
 	public void hitBy(IDynamicCellContent bomb) {
 		// no call to super.
 		if (bomb instanceof IKilling && !isDying()) {
-			setTargetPosition(null);
-			setLastPath(null);
-			setDiedAt(System.currentTimeMillis()); 
-			setLives(lives - 1);
+			die();
 		}
 	}
 
@@ -62,5 +59,12 @@ public class Player extends LiveContent implements ILivecontent {
 
 	public void removePropertyChangeListener(PropertyChangeListener listener) {
 		support.removePropertyChangeListener(listener);
+	}
+
+	public void die() {
+		setTargetPosition(null);
+		setLastPath(null);
+		setDiedAt(System.currentTimeMillis());
+		setLives(lives - 1);
 	}
 }

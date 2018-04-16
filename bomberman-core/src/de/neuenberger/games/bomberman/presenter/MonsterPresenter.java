@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.model.still.StillModel;
 
-import de.neuenberger.games.bomberman.BombermanGame;
 import de.neuenberger.games.bomberman.ki.monster.BaseMonsterMover;
 import de.neuenberger.games.bomberman.ki.monster.IMonsterMover;
 import de.neuenberger.games.bomberman.ki.monster.MonsterMoverEasy;
@@ -17,6 +17,7 @@ import de.neuenberger.games.bomberman.ki.monster.MonsterMoverMedium;
 import de.neuenberger.games.bomberman.model.BombermanModel;
 import de.neuenberger.games.bomberman.model.Monster;
 import de.neuenberger.games.bomberman.model.Player;
+import de.neuenberger.games.core.resource.ObjectResource;
 import de.neuenberger.games.core.resource.Resource;
 import de.neuenberger.games.core.resource.ResourceManager;
 import de.neuenberger.games.core.resource.ResourceType;
@@ -26,13 +27,47 @@ public class MonsterPresenter extends BaseSubPresenter<Monster, Player> {
 
 	Map<Monster.KiLevel,IMonsterMover> mapMonsterMover = new HashMap<Monster.KiLevel,IMonsterMover>();
 
+	private Resource<Texture> textureGhostGreen;
+
+	private Resource<Texture> textureGhostRed;
+
+	private Resource<Texture> textureGhostPurple;
+
+	private ObjectResource greenMonster;
+
+	private ObjectResource purpleMonster;
+
+	private ObjectResource redMonster;
+
+	private Resource<Texture> textureGhostPurpleBlack;
+
+	private ObjectResource purpleBlackMonster;
+
 	public MonsterPresenter(BombermanModel model) {
 		super(Monster.class, model);
 	}
 
 	public void create() {
 		super.create();
-		monsterModel = ResourceManager.getInstance().addLoadRequest("ghost.obj", ResourceType.OBJECT);
+		ResourceManager rm = ResourceManager.getInstance();
+		monsterModel = rm.addLoadRequest("ghost.obj", ResourceType.OBJECT);
+
+		textureGhostGreen = rm.addLoadRequest("ghost-green.png", ResourceType.TEXTURE);
+		textureGhostRed = rm.addLoadRequest("ghost-red.png", ResourceType.TEXTURE);
+		textureGhostPurple = rm.addLoadRequest("ghost-purple.png", ResourceType.TEXTURE);
+		textureGhostPurpleBlack = rm.addLoadRequest("ghost-purple-black.png", ResourceType.TEXTURE);
+
+		greenMonster = ((ObjectResource) monsterModel).clone();
+		greenMonster.setTexture(textureGhostGreen);
+
+		purpleMonster = ((ObjectResource) monsterModel).clone();
+		purpleMonster.setTexture(textureGhostPurple);
+
+		purpleBlackMonster = ((ObjectResource) monsterModel).clone();
+		purpleBlackMonster.setTexture(textureGhostPurpleBlack);
+
+		redMonster = ((ObjectResource) monsterModel).clone();
+		redMonster.setTexture(textureGhostRed);
 
 		mapMonsterMover.put(Monster.KiLevel.Noob, new BaseMonsterMover(getModel()));
 		mapMonsterMover.put(Monster.KiLevel.Easy, new MonsterMoverEasy(getModel()));
@@ -61,7 +96,22 @@ public class MonsterPresenter extends BaseSubPresenter<Monster, Player> {
 		}
 		
 		getShader().setUniformf("u_alpha", alpha);
-		monsterModel.getResource().render(getShader());
+		switch (m.getKiLevel()) {
+		case Easy:
+			greenMonster.getResource().render(getShader());
+			break;
+		case Hard:
+			redMonster.getResource().render(getShader());
+			break;
+		case Harder:
+			purpleMonster.getResource().render(getShader());
+		case Hardest:
+			purpleBlackMonster.getResource().render(getShader());
+			break;
+		default:
+			monsterModel.getResource().render(getShader());
+		}
+
 		if (alpha==0f) {
 			getModel().getDynamicContent().remove(m);
 		}

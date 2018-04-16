@@ -3,10 +3,13 @@ package de.neuenberger.games.core.resource;
 import com.badlogic.gdx.files.FileHandle;
 
 public abstract class Resource<R> {
-	private ResourceType type;
+	private final ResourceType type;
 	protected R resource;
-	private FileHandle fileHandle;
-	protected Resource(ResourceType type, FileHandle fileHandle) {
+	private final FileHandle fileHandle;
+	private final ResourceManager resourceManager;
+
+	protected Resource(ResourceManager resourceManager, ResourceType type, FileHandle fileHandle) {
+		this.resourceManager = resourceManager;
 		this.type=type;
 		this.fileHandle = fileHandle;
 	}
@@ -34,4 +37,12 @@ public abstract class Resource<R> {
 	}
 	
 	abstract void dispose();
+
+	protected FileHandle getFileHandle() {
+		return fileHandle;
+	}
+
+	protected ResourceManager getResourceManager() {
+		return resourceManager;
+	}
 }

@@ -2,10 +2,8 @@ package de.neuenberger.games.bomberman.presenter;
 
 import java.util.List;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 
-import de.neuenberger.games.bomberman.ki.monster.LiveContentMover;
 import de.neuenberger.games.bomberman.logic.MoveLogic;
 import de.neuenberger.games.bomberman.model.Bomb;
 import de.neuenberger.games.bomberman.model.BombermanModel;
@@ -13,9 +11,6 @@ import de.neuenberger.games.bomberman.model.DynamicCellContent;
 import de.neuenberger.games.bomberman.model.ILivecontent;
 import de.neuenberger.games.bomberman.model.Player;
 import de.neuenberger.games.bomberman.model.PlayerMapContext;
-import de.neuenberger.games.core.ki.Path;
-import de.neuenberger.games.core.ki.PathFinder;
-import de.neuenberger.games.core.model.DefaultMapContext;
 import de.neuenberger.games.core.model.MapPosition;
 import de.neuenberger.games.core.model.NCell;
 
@@ -26,46 +21,40 @@ public class PlayerControl {
 
 	MoveLogic logic;
 
-	LiveContentMover mover;
-	
 	public PlayerControl(Player p, BombermanModel model) {
 		this.player = p;
 		this.model = model;
 		logic = new MoveLogic(player, model, PlayerMapContext.getInstance());
-		mover = new LiveContentMover(model, PlayerMapContext.getInstance());
 	}
 
-	public void control(Input input, float delta) {
-		if (mover.move(delta, player)) {
-			return;
-		}
+	public void control(ControlButtonStates controlButtonStates, float delta) {
 		float add = delta * 10;
 		boolean change = false;
 		float offsetX = player.getOffsetX();
 		float offsetY = player.getOffsetY();
 
 		if (!player.isDying()) {
-			if (input.isKeyPressed(Input.Keys.UP)) {
+			if (controlButtonStates.isUpButtonPressed()) {
 				player.setOrientation(DynamicCellContent.Orientation.MIN_Y);
 				offsetY -= add;
 				change = true;
 			}
-			if (input.isKeyPressed(Input.Keys.DOWN)) {
+			if (controlButtonStates.isDownButtonPressed()) {
 				player.setOrientation(DynamicCellContent.Orientation.POS_Y);
 				offsetY += add;
 				change = true;
 			}
-			if (input.isKeyPressed(Input.Keys.LEFT)) {
+			if (controlButtonStates.isLeftButtonPressed()) {
 				player.setOrientation(DynamicCellContent.Orientation.MIN_X);
 				offsetX -= add;
 				change = true;
 			}
-			if (input.isKeyPressed(Input.Keys.RIGHT)) {
+			if (controlButtonStates.isRightButtonPressed()) {
 				player.setOrientation(DynamicCellContent.Orientation.POS_X);
 				offsetX += add;
 				change = true;
 			}
-			if (input.isKeyPressed(Input.Keys.CONTROL_LEFT)) {
+			if (controlButtonStates.isFireButtonPressed()) {
 				tryLayBomb();
 			}
 		}
@@ -84,9 +73,7 @@ public class PlayerControl {
 			List<Bomb> content = model.getDynamicContent(Bomb.class);
 			int count = getCount(content);
 			if (count < player.getBombs()) {
-				Bomb bomb = new Bomb(player, cell);
-				model.getDynamicContent().add(bomb);
-
+				new Bomb(player, cell);
 			}
 		}
 	}
@@ -124,25 +111,6 @@ public class PlayerControl {
 
 	public MapPosition getPosition() {
 		return player.getPosition();
-	}
-
-	public void handleLeftClick(MapPosition position, float deltaTime) {
-		boolean locked = false;
-		if (player.getLockPathSeekingUntil()!=null) {
-			if (System.currentTimeMillis()<player.getLockPathSeekingUntil()) {
-				locked = true;
-			} else {
-				player.setLockPathSeekingUntil(null);
-			}
-		}
-		if (!locked) {
-			Path path = PathFinder.findPath(model.getMap(), getPosition(), position, 16., PlayerMapContext.getInstance());
-			if (path!=null) {
-				player.setLastPath(path);
-				player.setTargetPosition(null);
-				player.setLockPathSeekingUntil(System.currentTimeMillis()+100);
-			}
-		}
 	}
 
 	public ILivecontent getPlayer() {

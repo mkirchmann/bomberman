@@ -5,12 +5,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.lwjgl.opengl.Display;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 public class ResourceManager {
 	private Map<String, Resource> resourceMap = new HashMap<String, Resource>(100);
@@ -43,13 +40,13 @@ public class ResourceManager {
 			}
 			switch (type) {
 			case OBJECT:
-				resource = new ObjectResource(handle);
+				resource = new ObjectResource(this, handle);
 				break;
 			case TEXTURE:
-				resource = new TextureResource(handle);
+				resource = new TextureResource(this, handle);
 				break;
 			case FONT:
-				resource = new FontResource(id);
+				resource = new FontResource(this, id);
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid type: "+type);

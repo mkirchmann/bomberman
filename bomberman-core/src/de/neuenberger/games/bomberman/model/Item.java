@@ -9,6 +9,7 @@ public class Item extends DynamicCellContent {
 		FLAME,
 		BOMB,
 		HEART,
+		POISON
 //		FASTER,
 //		TIME,
 //		MONSTERFREEZE,
@@ -44,10 +45,21 @@ public class Item extends DynamicCellContent {
 			case HEART:
 				player.setLives(player.getLives()+1);
 				break;
+			case POISON:
+				explode();
+				break;
 			}
 		} else if (content instanceof Fire) {
+			if (getType() == Type.POISON) {
+				explode();
+			}
 			super.hitBy(content);
 		}
 		
+	}
+
+	public void explode() {
+		Bomb bomb = new Bomb(getModel(), position, Orientation.POS_X, 100, getModel().getMap().getCell(position), 10l);
+		getModel().getDynamicContent().add(bomb);
 	}
 }

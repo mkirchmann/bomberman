@@ -8,8 +8,8 @@ public class ShaderResource extends DisposableResource<ShaderProgram> {
 
 	private String id;
 
-	public ShaderResource(String id) {
-		super(ResourceType.SHADER, null);
+	public ShaderResource(ResourceManager resourceManager, String id) {
+		super(resourceManager, ResourceType.SHADER, null);
 		this.id = id;
 	}
 

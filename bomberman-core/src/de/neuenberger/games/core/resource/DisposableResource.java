@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.Disposable;
 
 public abstract class DisposableResource<R  extends Disposable> extends Resource<R> {
 
-	protected DisposableResource(ResourceType type, FileHandle fileHandle) {
-		super(type, fileHandle);
+	protected DisposableResource(ResourceManager resourceManager, ResourceType type, FileHandle fileHandle) {
+		super(resourceManager, type, fileHandle);
 	}
 
 	@Override

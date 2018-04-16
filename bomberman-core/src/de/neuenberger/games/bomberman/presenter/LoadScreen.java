@@ -2,7 +2,6 @@ package de.neuenberger.games.bomberman.presenter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import de.neuenberger.games.bomberman.BombermanGame;
+import de.neuenberger.games.core.resource.FontResource;
 import de.neuenberger.games.core.resource.ResourceManager;
 import de.neuenberger.games.core.resource.ResourceType;
 
@@ -24,8 +24,8 @@ public class LoadScreen extends DefaultScreen {
 	private Sprite sprite;
 	private BombermanPresenter bombermanPresenter;
 	private boolean pushed;
-	private BitmapFont font;
-	private Color textColor;
+	private FontResource fontResource;
+	boolean firstTimeLoad = true;
 
 	public LoadScreen(BombermanGame game) {
 		super(game);
@@ -48,10 +48,9 @@ public class LoadScreen extends DefaultScreen {
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
-		font = (BitmapFont) ResourceManager.getInstance().addLoadRequest("arial-15", ResourceType.FONT).getResource();
-		bombermanPresenter=new BombermanPresenter(game);
+		fontResource = (FontResource) ResourceManager.getInstance().addLoadRequest("arial-15", ResourceType.FONT);
+		bombermanPresenter = new BombermanPresenter(game, this);
 		bombermanPresenter.create();
-		textColor = new Color(0.7f,0.7f,0.7f,1f);
 	}
 
 	@Override
@@ -62,29 +61,43 @@ public class LoadScreen extends DefaultScreen {
 
 	@Override
 	public void render(float delta) {		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		sprite.draw(batch);
-		font.setColor(textColor);
-		font.draw(batch, "u", (int)(Gdx.graphics.getWidth()*0.5), (int)(Gdx.graphics.getHeight()*0.6));
+		BitmapFont font = fontResource.getResource();
+		if (ResourceManager.getInstance().isAllLoaded()) {
+			font.draw(batch, "Wait for loading", 10, Gdx.graphics.getHeight() - 20);
+		} else {
+			font.draw(batch, "Push screen to start new game", 10, Gdx.graphics.getHeight() - 20);
+		}
 		batch.end();
 		
 		
 		if (ResourceManager.getInstance().isAllLoaded()) {
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 				if (!pushed) {
-					bombermanPresenter.postAsyncCreate();
-					bombermanPresenter.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+					if (firstTimeLoad) {
+						bombermanPresenter.postAsyncCreate();
+						bombermanPresenter.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+						firstTimeLoad = false;
+					}
 				}
 				pushed=true;
 			} else if (pushed==true) {
 				game.setScreen(bombermanPresenter);
+				pushed = false;
 			}
 		}
 	}
 	
+	/**
+	 * Shows this screen.
+	 */
+	public void present() {
+		game.setScreen(this);
+	}
 
 }

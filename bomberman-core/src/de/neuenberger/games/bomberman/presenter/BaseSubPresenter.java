@@ -3,18 +3,14 @@ package de.neuenberger.games.bomberman.presenter;
 import java.util.Collections;
 import java.util.List;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 
-import de.neuenberger.games.bomberman.BombermanGame;
 import de.neuenberger.games.bomberman.model.BombermanModel;
 import de.neuenberger.games.bomberman.model.IDynamicCellContent;
-import de.neuenberger.games.bomberman.model.Item;
 import de.neuenberger.games.bomberman.model.LiveContent;
-import de.neuenberger.games.bomberman.model.Player;
 import de.neuenberger.games.core.model.MapPosition;
 import de.neuenberger.games.core.resource.ResourceManager;
 
@@ -89,6 +85,12 @@ public abstract class BaseSubPresenter<M extends IDynamicCellContent, H extends 
 		MapPosition position = m.getPosition();
 		transformation.set(camera.combined);
 		transformation.translate((position.getX()+offsetX)*BombermanPresenter.SPACE_PER_TILE, 0, (position.getY()+offsetY)*BombermanPresenter.SPACE_PER_TILE);
+		if (m.getOrientation() != null) {
+			float rotation = m.getOrientation().getRotation();
+			if (rotation != 0.0) {
+				transformation.rotate(0, 1, 0, rotation);
+			}
+		}
 		shader.setUniformMatrix("u_projTrans", transformation);
 	}
 

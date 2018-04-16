@@ -8,14 +8,14 @@ public class FontResource extends DisposableResource<BitmapFont> {
 
 	private FileHandle descriptionFile;
 
-	protected FontResource(String name) {
-		super(ResourceType.FONT, Gdx.files.internal(name+".png"));
+	protected FontResource(ResourceManager resourceManager, String name) {
+		super(resourceManager, ResourceType.FONT, Gdx.files.internal(name + ".png"));
 		descriptionFile = Gdx.files.internal(name+".fnt");
 	}
 
 	@Override
 	BitmapFont loadResource(FileHandle fileHandle2) {
-		return new BitmapFont(descriptionFile, fileHandle2, false);
+		return new BitmapFont(descriptionFile, fileHandle2, true);
 	}
 
 }

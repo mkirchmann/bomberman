@@ -18,8 +18,9 @@ public class ItemPresenter extends BaseSubPresenter<Item, Player>{
 
 	private Resource<Texture> textureBomb;
 	private Resource<Texture> textureFlame;
-	private Mesh itemModel;
 	private Resource<Texture> textureHeart;
+	private Resource<Texture> texturePoison;
+	private Mesh itemModel;
 
 	ItemPresenter(BombermanModel model) {
 		super(Item.class, model);
@@ -37,6 +38,7 @@ public class ItemPresenter extends BaseSubPresenter<Item, Player>{
 		textureBomb = rm.addLoadRequest("item_bomb.png", ResourceType.TEXTURE);
 		textureFlame = rm.addLoadRequest("item_flame.png", ResourceType.TEXTURE);
 		textureHeart = rm.addLoadRequest("item_heart.png", ResourceType.TEXTURE);
+		texturePoison = rm.addLoadRequest("item_poison.png", ResourceType.TEXTURE);
 	}
 
 	@Override
@@ -49,6 +51,11 @@ public class ItemPresenter extends BaseSubPresenter<Item, Player>{
 		case FLAME:
 			textureFlame.getResource().bind();
 			break;
+		case HEART:
+			textureHeart.getResource().bind();
+			break;
+		case POISON:
+			texturePoison.getResource().bind();
 		}
 		itemModel.render(getShader(), GL20.GL_TRIANGLES);
 	}
