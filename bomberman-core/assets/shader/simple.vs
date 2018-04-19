@@ -1,4 +1,5 @@
 //combined projection and view matrix
+precision highp float;
 uniform mat4 u_projTrans;
 uniform vec3 u_lightdir;
 
@@ -9,13 +10,15 @@ attribute vec4 a_color;
 attribute vec3 a_normal;
 
 //"out" varyings to our fragment shader
-varying vec4 vColor;
+varying lowp vec4 vColor;
 varying vec2 vTexCoord;
- 
+
+const float lightdiramp = 0.01;
+const float floatone = 1.0;
 void main() {
-	vColor = vec4(a_normal, 1.0f);
+	vColor = vec4(a_normal, floatone);
 	vColor = a_color;
-	vTexCoord = a_texCoord + 0.0f*u_lightdir.x;
+	vTexCoord = a_texCoord + lightdiramp*u_lightdir.x;
 	// gl_Position = u_projTrans * vec4(a_position, 0.0, 1.0);
 	gl_Position = u_projTrans * a_position;
 }
